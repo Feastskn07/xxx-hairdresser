@@ -1,0 +1,35 @@
+@* Basit iskelet: sonra Identity/gerçek login ile bağlarız *@
+<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header">
+        <h5 class="modal-title">Giriş Yap</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" asp-controller="Account" asp-action="Login">
+          <div class="mb-3">
+            <label class="form-label">Kullanıcı adı veya E-posta</label>
+            <input class="form-control" name="UserNameOrEmail" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Şifre</label>
+            <input class="form-control" type="password" name="Password" required />
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="RememberMe" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">Beni hatırla</label>
+            </div>
+            <a href="#" class="small">Şifremi unuttum</a>
+          </div>
+          <button class="btn btn-primary w-100">Giriş Yap</button>
+        </form>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <div class="small text-muted">Hesabın yok mu?</div>
+        <button class="btn btn-outline-secondary" data-bs-target="#registerModal" data-bs-toggle="modal" data-bs-dismiss="modal">Kayıt Ol</button>
+      </div>
+    </div>
+  </div>
+</div>
