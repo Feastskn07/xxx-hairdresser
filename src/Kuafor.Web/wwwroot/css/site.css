@@ -29,3 +29,16 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+:root {
+  --brand: #111827;
+  --brand-2: #f3f4f6;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #fff 0%, #f7f7fb 60%, #eef2ff 100%);
+}
+
+.hero-card { border: 1px solid rgba(0, 0, 0, .06); }
+
+.service-card:hover { transform: translateY(-2px); transition: .2s ease; }
