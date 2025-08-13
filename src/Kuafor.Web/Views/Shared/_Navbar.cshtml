@@ -1,0 +1,32 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+  <div class="container">
+    <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">
+      xxx-hairdresser
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#services">Hizmetler</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonials">Yorumlar</a></li>
+      </ul>
+      <div class="d-flex gap-2">
+        @if (User?.Identity?.IsAuthenticated ?? false)
+        {
+            <a class="btn btn-primary" asp-controller="Randevu" asp-action="Olustur">
+              <i class="bi bi-calendar2-check"></i> Randevu Al
+            </a>
+            <a class="btn btn-outline-secondary" asp-controller="Account" asp-action="Logout">Çıkış</a>
+        }
+        else
+        {
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+              <i class="bi bi-calendar2-check"></i> Randevu Al
+            </button>
+        }
+      </div>
+    </div>
+  </div>
+</nav>
