@@ -1,0 +1,55 @@
+<div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header">
+        <h5 class="modal-title">Kayıt Ol</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" asp-controller="Account" asp-action="Register">
+          <div class="row g-2">
+            <div class="col-md-6">
+              <label class="form-label">Ad</label>
+              <input class="form-control" name="FirstName" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Soyad</label>
+              <input class="form-control" name="LastName" required />
+            </div>
+          </div>
+          <div class="mt-2">
+            <label class="form-label">E-posta</label>
+            <input class="form-control" type="email" name="Email" required />
+          </div>
+          <div class="mt-2">
+            <label class="form-label">Telefon</label>
+            <input class="form-control" name="Phone" />
+          </div>
+          <div class="row g-2 mt-2">
+            <div class="col-md-6">
+              <label class="form-label">Şifre</label>
+              <input class="form-control" type="password" name="Password" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Şifre (Tekrar)</label>
+              <input class="form-control" type="password" name="ConfirmPassword" required />
+            </div>
+          </div>
+          <div class="form-check mt-3">
+            <input class="form-check-input" type="checkbox" id="terms" required>
+            <label class="form-check-label" for="terms">Kullanıcı sözleşmesini kabul ediyorum</label>
+          </div>
+          <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" id="newsletter">
+            <label class="form-check-label" for="newsletter">Duyuru ve teklifler için e-posta almak istiyorum</label>
+          </div>
+          <button class="btn btn-primary w-100 mt-3">Kayıt Ol</button>
+        </form>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <div class="small text-muted">Zaten hesabın var mı?</div>
+        <button class="btn btn-outline-secondary" data-bs-target="#loginModal" data-bs-toggle="modal" data-bs-dismiss="modal">Giriş Yap</button>
+      </div>
+    </div>
+  </div>
+</div>
