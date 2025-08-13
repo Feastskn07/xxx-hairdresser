@@ -1,0 +1,16 @@
+@model bool
+<section class="py-5 text-center">
+  <div class="container">
+    <div class="p-4 p-md-5 bg-dark text-white rounded-4">
+      <h2 class="mb-3">Yeni bir görünüm için hazırsın!</h2>
+      @if (Model)
+      {
+          <a class="btn btn-light btn-lg" asp-controller="Randevu" asp-action="Olustur">Hemen Randevu Al</a>
+      }
+      else
+      {
+          <button class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#loginModal">Hemen Randevu Al</button>
+      }
+    </div>
+  </div>
+</section>
