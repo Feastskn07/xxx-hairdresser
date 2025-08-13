@@ -1,8 +1,8 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model Kuafor.Web.Models.HomeViewModel
+@{
+    ViewData["Title"] = "Anasayfa";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<partial name="Partials/_Hero" model="Model" />
+<partial name="Partials/_Services" model="Model.Services" />
+<partial name="Partials/_Testimonials" model="Model.Testimonials" />
+<partial name="Partials/_Cta" model="Model.IsAuthenticated" />
