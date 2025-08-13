@@ -1,6 +1,6 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Kuafor.Web.Models;
+using Microsoft.AspNetCore.OutputCaching;
 
 namespace Kuafor.Web.Controllers;
 
