@@ -17,6 +17,10 @@ html {
   min-height: 100%;
 }
 
+body {
+  user-select: none;
+}
+
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
   color: var(--bs-secondary-color);
   text-align: end;
@@ -57,3 +61,32 @@ html {
 /* Görsel düzen: linkler */
 .navbar .nav-link { font-weight: 500; }
 .navbar .dropdown-menu { min-width: 14rem; }
+
+.site-footer {
+  position: relative;
+}
+.site-footer::before {
+  content: "";
+  position: absolute; inset:0;
+  background: rgba(0, 0, 0, .25);
+  pointer-events: none;
+}
+.site-footer > * { position: relative; }
+.footer-sep {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, .35);
+}
+.social-icon {
+  display: inline-flex;
+  width: 40px; height: 40px;
+  border-radius: 999px;
+  align-items: center; justify-content: center;
+  background: rgba(255, 255, 255, .12);
+  color: #fff; text-decoration: none;
+  transition: transform .15s ease, background-color .15s ease, opacity .15s ease;
+}
+.social-icon i { font-size: 1.1rem;}
+.social-icon:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .2); }
+.site-footer h5 { letter-spacing: .2px; }
+.site-footer a { text-decoration: none; }
