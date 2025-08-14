@@ -1,32 +1,132 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
-  <div class="container">
-    <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">
-      xxx-hairdresser
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mainNav">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="#services">Hizmetler</a></li>
-        <li class="nav-item"><a class="nav-link" href="#testimonials">Yorumlar</a></li>
-      </ul>
-      <div class="d-flex gap-2">
-        @if (User?.Identity?.IsAuthenticated ?? false)
-        {
-            <a class="btn btn-primary" asp-controller="Randevu" asp-action="Olustur">
-              <i class="bi bi-calendar2-check"></i> Randevu Al
-            </a>
-            <a class="btn btn-outline-secondary" asp-controller="Account" asp-action="Logout">Çıkış</a>
-        }
-        else
-        {
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
-              <i class="bi bi-calendar2-check"></i> Randevu Al
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+        <div class="container justify-content-center">
+            <!-- Mobile toggler + Mobil Offcanvas (yalnızca mobilde) -->
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-label="Menüyü aç">
+                <span class="navbar-toggler-icon"></span>
             </button>
-        }
-      </div>
-    </div>
-  </div>
-</nav>
+            <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mainNav" aria-labelledby="mainNavLabel">
+                <div class="offcanvas-header">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                        <img src="~/images/logo.png" alt="xxx-hairdresser" class="brand-logo" />
+                    </a>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Kapat"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav">
+                        <!-- Mobil menü: tüm linkler burada -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Hizmetler</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#services">Tümü</a></li>
+                                <li><a class="dropdown-item" asp-controller="Services" asp-action="Index">Fiyat
+                                        Listesi</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail"
+                                        asp-route-id="sac-kesim">Saç Kesimi</a></li>
+                                <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail"
+                                        asp-route-id="sakal">Sakal Tıraşı</a></li>
+                                <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail"
+                                        asp-route-id="boya">Boya</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#testimonials">Yorumlar</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Contact">İletişim</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            @if (User?.Identity?.IsAuthenticated ?? false)
+                            {
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Hesap</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile">Profilim</a>
+                                    </li>
+                                    <li><a class="dropdown-item" asp-controller="Appointment"
+                                            asp-action="List">Randevularım</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider" />
+                                    </li>
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıkış Yap</a>
+                                    </li>
+                                </ul>
+                            }
+                            else
+                            {
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Hesap</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#loginModal">Giriş Yap</a></li>
+                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#registerModal">Kayıt Ol</a></li>
+                                </ul>
+                            }
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Masaüstü (lg+) Grid: [sol menü] [logo] [sağ menü] -->
+            <div class="nav-center-grid d-none d-lg-grid align-items-center">
+                <!-- Sol grup (logoya yaslı) -->
+                <ul class="navbar-nav flex-row justify-self-end gap-3">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Hizmetler</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#services">Tümü</a></li>
+                            <li><a class="dropdown-item" asp-controller="Services" asp-action="Index">Fiyat
+                                    Listesi</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail"
+                                    asp-route-id="sac-kesim">Saç Kesimi</a></li>
+                            <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail"
+                                    asp-route-id="sakal">Sakal Tıraşı</a></li>
+                            <li><a class="dropdown-item" asp-controller="Services" asp-action="Detail"
+                                    asp-route-id="boya">Boya</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Yorumlar</a></li>
+                </ul>
+                <!-- Orta grup (logo) -->
+                <a class="navbar-brand mx-2 justify-self-center" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/logo.png" alt="Logo" class="brand-logo" />
+                </a>
+                <!-- Sağ grup (logoya yaslı) -->
+                <ul class="navbar-nav flex-row gap-3 align-items-center justify-self-start">
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Contact">İletişim</a></li>
+                    <li class="nav-item dropdown">
+                        @if (User?.Identity?.IsAuthenticated ?? false)
+                        {
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Hesap</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile">Profilim</a>
+                                </li>
+                                <li><a class="dropdown-item" asp-controller="Appointment"
+                                        asp-action="List">Randevularım</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıkış Yap</a>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Hesap</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#loginModal">Giriş Yap</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#registerModal">Kayıt Ol</a></li>
+                            </ul>
+                        }
+                    </li>
+                </ul>
+            </div>
+            <!-- /grid -->
+        </div>
+    </nav>
+</header>
