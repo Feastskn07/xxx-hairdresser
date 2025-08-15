@@ -90,3 +90,51 @@ body {
 .social-icon:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .2); }
 .site-footer h5 { letter-spacing: .2px; }
 .site-footer a { text-decoration: none; }
+
+.modal-header .brand-logo { width: 50px; height: auto; filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));}
+
+.outlined-group {
+  --field-bg: var(--bs-body-bg);
+  --field-border: #000;
+  position: relative;
+}
+.outlined-control {
+  background: transparent;
+  border: 2px solid var(--field-border);
+  border-radius: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  outline: none;
+  box-shadow: none;
+}
+.outlined-label {
+  position: absolute;
+  top: 0; left: 12px;
+  transform: translateY(-50%);
+  padding: 0 6px;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--field-border);
+  background: var(--field-bg);
+  line-height: 1;
+}
+.outlined-group:focus-within .outlined-control {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .2);
+}
+.outlined-group:focus-within .outlined-label {
+  color: var(--bs-primary);
+}
+.outlined-group:has(.input-validation-error) {
+ /* modern tarayıcalarda çalışır */ 
+}
+.outlined-group:has(.input-validation-error) .outlined-control {
+  border-color: var(--bs-danger) !important;
+  box-shadow: 0 0 0 .2rem rgba(var(--bs-danger-rgb), .15);
+}
+.outlined-group:has(.input-validation-error) .outlined-label {
+  color: var(--bs-danger);
+}
+[data-bs-theme="dark"] .outlined-group {
+  --field-bg: var(--bs-dark-bg);
+  --field-border: rgba(255, 255, 255, .85);
+}

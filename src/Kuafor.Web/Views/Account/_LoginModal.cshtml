@@ -1,27 +1,30 @@
 @* Basit iskelet: sonra Identity/gerçek login ile bağlarız *@
-<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade show d-block" id="loginModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content rounded-4">
-      <div class="modal-header">
+    <div class="modal-content rounded-4 overflow-hidden">
+      <div class="modal-header bg-gradient gap-2">
+        <img src="~/images/logo.png" alt="Logo" class="brand-logo" />
         <h5 class="modal-title">Giriş Yap</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
         <form method="post" asp-controller="Account" asp-action="Login">
-          <div class="mb-3">
-            <label class="form-label">Kullanıcı adı veya E-posta</label>
-            <input class="form-control" name="UserNameOrEmail" required />
+          <div class="outlined-group mb-3">
+            <label class="outlined-label" @* asp-for="UserNameOrEmail" *@>Kullanıcı adı veya E-posta</label>
+            <input class="form-control outlined-control" @* asp-for="UserNameOrEmail" *@ placeholder="Buraya yazınız..." />
+            <span class="text-danger small" @* asp-validation-for="UserNameOrEmail" *@></span>
           </div>
-          <div class="mb-3">
-            <label class="form-label">Şifre</label>
-            <input class="form-control" type="password" name="Password" required />
+          <div class="outlined-group mb-3">
+            <label class="outlined-label" @* asp-for="Password" *@>Şifre</label>
+            <input class="form-control outlined-control" @* asp-for="Password" *@ placeholder="Buraya yazınız..." type="password" />
+            <span class="text-danger small" @* asp-validation-for="Password" *@></span>
           </div>
           <div class="d-flex justify-content-between align-items-center mb-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name="RememberMe" id="rememberMe">
               <label class="form-check-label" for="rememberMe">Beni hatırla</label>
             </div>
-            <a href="#" class="small">Şifremi unuttum</a>
+            <a class="small" href="#">Şifremi unuttum</a>
           </div>
           <button class="btn btn-primary w-100">Giriş Yap</button>
         </form>
