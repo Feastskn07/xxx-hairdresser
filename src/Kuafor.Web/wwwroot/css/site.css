@@ -124,9 +124,6 @@ body {
 .outlined-group:focus-within .outlined-label {
   color: var(--bs-primary);
 }
-.outlined-group:has(.input-validation-error) {
- /* modern tarayıcalarda çalışır */ 
-}
 .outlined-group:has(.input-validation-error) .outlined-control {
   border-color: var(--bs-danger) !important;
   box-shadow: 0 0 0 .2rem rgba(var(--bs-danger-rgb), .15);
