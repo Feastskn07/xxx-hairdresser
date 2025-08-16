@@ -1,0 +1,22 @@
+<div id="cmd-overlay" class="cmd-overlay d-none" role="dialog" aria-modal="true" aria-labelledby="cmd-title">
+  <div class="cmd-dialog">
+    <div class="cmd-header">
+      <input id="cmd-input" type="text" class="form-control form-control-lg" placeholder="Komut veya sayfa ara…" autocomplete="off" />
+    </div>
+    <div id="cmd-results" class="cmd-results"></div>
+    <div class="cmd-footer text-muted small">Esc ile kapat · Enter ile git · ↑/↓ ile seç · Ctrl/⌘+K ile aç</div>
+  </div>
+</div>
+
+<style>
+  .cmd-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 1055; display: grid; place-items: start center; padding-top: 10vh; }
+  .cmd-dialog { width: min(720px, 92vw); background: #fff; border-radius: .75rem; box-shadow: 0 1rem 2rem rgba(0,0,0,.25); overflow: hidden; border: 1px solid rgba(0,0,0,.05); }
+  .cmd-header { padding: 1rem; border-bottom: 1px solid rgba(0,0,0,.07); }
+  .cmd-results { max-height: 60vh; overflow: auto; }
+  .cmd-item { padding: .875rem 1rem; cursor: pointer; display: flex; align-items: center; gap: .75rem; }
+  .cmd-item:hover, .cmd-item.active { background: #f6f6f7; }
+  .cmd-item-title { font-weight: 600; }
+  .cmd-item-desc { color: #6c757d; font-size: .875rem; }
+  .cmd-footer { padding: .5rem 1rem; border-top: 1px solid rgba(0,0,0,.07); background: #fafafa; }
+  .cmd-icon { font-size: 1.25rem; width: 1.5rem; text-align: center; }
+</style>
