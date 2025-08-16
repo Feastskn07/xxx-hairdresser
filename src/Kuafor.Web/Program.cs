@@ -4,6 +4,13 @@ using Kuafor.Web.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// GEÇİCİ: Tüm provider'ları temizle, sadece basit console kullan
+builder.Logging.ClearProviders();
+builder.Logging.AddSimpleConsole(o => { o.SingleLine = true; });
+
+// GEÇİCİ: ASP.NET Core'un "unhandled exception" logunu sustur
+builder.Logging.AddFilter("Microsoft.AspNetCore.Diagnostics", LogLevel.None);
+
 // TODO[DB]: SQLite DbContext'i burada ekle
 // builder.Services.AddDbContext<AppDbContext>(o =>
 //     o.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
